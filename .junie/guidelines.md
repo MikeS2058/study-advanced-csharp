@@ -1,4 +1,4 @@
-﻿# Project Guidelines for Junie
+﻿﻿# Project Guidelines for Junie
 
 Last updated: [DATE]
 
@@ -88,3 +88,20 @@ The test suite output will include pass/fail counts. Tests implicitly build the 
 - The solution targets specific .NET and C# versions; ensure your changes compile under these settings.
 - Use Windows-style paths in examples and scripts.
 - Review project-specific `.editorconfig` and `.csproj` settings for additional constraints.
+
+## 11) AITransfer Template Synchronization
+
+**Important for AI Assistants**: This repository maintains reusable AI configuration templates in the `AITransfer/` directory.
+
+When you modify **this file** (`.junie/guidelines.md`) or other configuration files (`.github/copilot-instructions.md`, `.editorconfig`, `.gitignore`, `.gitattributes`, `global.json`), you **must also update** the corresponding template file in `AITransfer/`.
+
+### Synchronization Process
+
+1. Copy the updated file to `AITransfer/` directory
+2. Replace project-specific values with placeholders (e.g., project names → `[ProjectName]`, versions → `[VERSION]`)
+3. Keep patterns, standards, and best practices unchanged
+4. Commit both the active file and template file together
+
+**Why?** The `AITransfer/` directory is copied to new repositories. Outdated templates mean new projects start with old standards.
+
+See `AITransfer/README.md` section "🔄 Keeping AITransfer Templates Synchronized" for detailed workflow.

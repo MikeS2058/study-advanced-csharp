@@ -335,4 +335,46 @@ Review and update these based on project requirements.
 
 ---
 
+## 🔄 AITransfer Template Synchronization
+
+**Critical for AI Assistants**: This repository maintains AI configuration templates in the `AITransfer/` directory for reuse in other projects.
+
+### Synchronization Requirement
+
+When you modify **this file** (`.github/copilot-instructions.md`) or other configuration files, you **must also update** the corresponding template in the `AITransfer/` directory.
+
+### Files Requiring Synchronization
+
+| Active File | Template File |
+|------------|---------------|
+| `.github/copilot-instructions.md` | `AITransfer/copilot-instructions.md` |
+| `.github/global-copilot-instructions.md` | `AITransfer/global-copilot-instructions.md` |
+| `.junie/guidelines.md` | `AITransfer/junie-guidelines.md` |
+| `.editorconfig` | `AITransfer/.editorconfig` |
+| `.gitignore` | `AITransfer/.gitignore` |
+| `.gitattributes` | `AITransfer/.gitattributes` |
+| `global.json` | `AITransfer/global.json` |
+
+### How to Sync Templates
+
+1. **Copy updated file** to AITransfer directory
+2. **Replace project-specific values** with placeholders:
+   - `[PROJECT_NAME]` → Actual project name becomes `[PROJECT_NAME]` placeholder
+   - `net[version]` → Specific versions become `net[version]`
+   - `C# [version]` → Specific versions become `C# [version]`
+   - `[version]` → Specific SDK versions become `[version]`
+3. **Preserve patterns and standards** — keep new best practices intact
+4. **Commit both files** together with clear message
+
+### Why This Matters
+
+The `AITransfer/` directory is copied to new repositories. If templates become outdated:
+- ❌ New projects start with obsolete coding standards
+- ❌ AI assistants use deprecated patterns
+- ❌ Teams miss new best practices
+
+See `AITransfer/README.md` section "🔄 Keeping AITransfer Templates Synchronized" for detailed workflow.
+
+---
+
 **This file provides guidance for AI assistants** — customize based on your project's specific needs, tech stack, and coding standards. Keep edits focused, well-documented, and aligned with established patterns. **All summary and technical documentation goes in the `docs/` folder.**

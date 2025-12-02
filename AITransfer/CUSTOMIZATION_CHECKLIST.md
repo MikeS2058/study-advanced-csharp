@@ -116,6 +116,25 @@ Set a reminder to review and update these files:
 - [ ] When team coding standards change
 - [ ] Quarterly or semi-annually
 
+## 🔄 For Source Repository Maintainers: Template Synchronization
+
+**If you're maintaining the source repository that contains this AITransfer directory:**
+
+When you update active configuration files in `.github/`, `.junie/`, or root configs, you must synchronize the AITransfer templates:
+
+- [ ] After updating `.github/copilot-instructions.md`, sync to `AITransfer/copilot-instructions.md`
+- [ ] After updating `.github/global-copilot-instructions.md`, sync to `AITransfer/global-copilot-instructions.md`
+- [ ] After updating `.junie/guidelines.md`, sync to `AITransfer/junie-guidelines.md`
+- [ ] After updating `.editorconfig`, sync to `AITransfer/.editorconfig`
+- [ ] After updating `.gitignore`, sync to `AITransfer/.gitignore`
+- [ ] After updating `global.json`, sync to `AITransfer/global.json`
+- [ ] Replace project-specific values with placeholders when syncing
+- [ ] Commit both active and template files together
+
+**Why?** New repositories copy from AITransfer. Outdated templates = outdated standards in new projects.
+
+See `AITransfer/README.md` section "🔄 Keeping AITransfer Templates Synchronized" for detailed workflow.
+
 ---
 
 **Last Updated**: December 2, 2025
