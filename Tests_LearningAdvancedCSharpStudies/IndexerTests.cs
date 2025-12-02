@@ -1,14 +1,13 @@
-﻿using FluentAssertions;
-using Learning_AdvancedCSharpStudies.IndexerStudites;
+﻿using Learning_AdvancedCSharpStudies.IndexerStudies;
 
 namespace Tests_LearningAdvancedCSharpStudies;
 
-public class UnitTest1
+public class IndexerTests
 {
     [Fact]
     public void Test1()
     {
-        var noteBooks = new NoteBooks
+        var noteBooks = new NoteBooks(20)
         {
             [0] = "Introduction to C#",
             [1] = "Advanced C# Concepts"
