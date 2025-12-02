@@ -36,8 +36,10 @@ Preferred (tool-based):
 
 Alternative (CLI; useful for reproductions in README):
 - PowerShell from repo root:
-  - `dotnet test [SolutionName].sln`
-  - Or a single project: `dotnet test .\[TestProjectName]\[TestProjectName].csproj`
+  - `dotnet test [SolutionName].sln --verbosity normal`
+  - Or a single project: `dotnet test .\[TestProjectName]\[TestProjectName].csproj --verbosity normal`
+
+**Important**: Always use `--verbosity normal` or `--verbosity detailed` to ensure output is visible in Rider terminal. Rider may buffer or suppress output without verbosity flags.
 
 The test suite output will include pass/fail counts. Tests implicitly build the solution.
 
@@ -46,9 +48,15 @@ The test suite output will include pass/fail counts. Tests implicitly build the 
 - Building is normally handled by `dotnet test`.
 - To build explicitly (PowerShell from repo root):
   - `dotnet restore`
-  - `dotnet build [SolutionName].sln -c Debug`
+  - `dotnet build [SolutionName].sln -c Debug --verbosity normal`
 - To run the app (if applicable):
   - `dotnet run --project .\[ProjectName]\[ProjectName].csproj -c Debug`
+
+**Rider Terminal Note**: If build/test output doesn't appear in terminal, the issue is likely Rider's output buffering. Solutions:
+1. Add `--verbosity normal` or `--verbosity detailed` to all dotnet commands
+2. Check **View → Tool Windows → Build** for build output
+3. Check **View → Tool Windows → Unit Tests** for test results
+4. Configure Rider: **Settings → Build, Execution, Deployment → Toolset and Build** → set MSBuild verbosity to Normal
 
 ## 6) Code style and conventions
 

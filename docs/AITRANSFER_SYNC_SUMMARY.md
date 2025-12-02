@@ -98,11 +98,27 @@ The following files have been updated to include synchronization instructions:
 
 ### Active Configuration Files
 - ✅ `.github/copilot-instructions.md` — Added "🔄 AITransfer Template Synchronization" section
+- ✅ `.github/copilot-instructions.md` — Added Rider terminal verbosity flags and configuration instructions (December 2, 2025)
 - ✅ `.junie/guidelines.md` — Added section 11 "AITransfer Template Synchronization"
+- ✅ `.junie/guidelines.md` — Added Rider terminal verbosity flags and troubleshooting (December 2, 2025)
 
 ### Template Files (AITransfer/)
 - ✅ `AITransfer/copilot-instructions.md` — Added "🔄 AITransfer Template Synchronization" section
+- ✅ `AITransfer/copilot-instructions.md` — Added Rider terminal verbosity flags and configuration instructions (December 2, 2025)
 - ✅ `AITransfer/junie-guidelines.md` — Added section 11 "AITransfer Template Synchronization"
+- ✅ `AITransfer/junie-guidelines.md` — Added Rider terminal verbosity flags and troubleshooting (December 2, 2025)
+
+### Recent Updates (December 2, 2025)
+
+**Rider Terminal Output Issue Resolution**:
+All configuration files have been updated to address Rider IDE terminal output buffering issues:
+
+1. **Default Verbosity Flags**: All `dotnet build` and `dotnet test` commands now include `--verbosity normal` by default
+2. **Troubleshooting Section**: Added Rider-specific configuration instructions for MSBuild and Unit Testing settings
+3. **Alternative Output Locations**: Documented View → Tool Windows → Build and Unit Tests as alternative output locations
+4. **Detailed Output Option**: Added `--verbosity detailed` option for comprehensive troubleshooting
+
+**Why This Change**: Rider IDE may buffer or route build/test output to tool windows instead of the terminal, causing confusion when commands appear to produce no output despite successful compilation.
 
 ---
 

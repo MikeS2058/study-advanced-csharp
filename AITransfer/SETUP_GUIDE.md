@@ -399,6 +399,36 @@ Get-ChildItem -Path "AITransfer" -Force
 **Solution**: Use find-and-replace in your editor
 - Open `.github/copilot-instructions.md`
 - Find: `[PROJECT_NAME]`
+- Replace with your actual project name
+- Repeat for all placeholders
+
+### Rider Terminal Shows No Build/Test Output
+
+**Problem**: Running `dotnet build` or `dotnet test` in Rider's terminal shows no output, but compilation succeeds
+
+**Cause**: Rider may buffer output or route it to Build/Unit Tests tool windows
+
+**Solutions**:
+
+1. **Use Verbosity Flags** (Recommended - already in templates):
+   ```powershell
+   dotnet build YourSolution.sln --verbosity normal
+   dotnet test YourSolution.sln --verbosity normal
+   ```
+
+2. **Configure Rider Settings**:
+   - **Settings → Build, Execution, Deployment → Toolset and Build**  
+     Set "MSBuild verbosity" to `Normal` or `Detailed`
+   
+   - **Settings → Build, Execution, Deployment → Unit Testing**  
+     Enable "Show test output in the run tool window"  
+     Set verbosity to `Normal` or `Detailed`
+
+3. **Check Alternative Output Locations**:
+   - **View → Tool Windows → Build** — for build output
+   - **View → Tool Windows → Unit Tests** — for test results
+
+**Note**: The AITransfer templates already include `--verbosity normal` flags by default to prevent this issue.
 - Replace: Your actual project name
 - Repeat for all placeholders
 

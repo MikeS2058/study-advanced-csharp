@@ -12,7 +12,8 @@
 3. [Git Configuration](#git-configuration)
 4. [Build and .NET Issues](#build-and-net-issues)
 5. [File Customization](#file-customization)
-6. [PowerShell Issues](#powershell-issues)
+6. [Rider IDE Terminal Output Issues](#rider-ide-terminal-output-issues)
+7. [PowerShell Issues](#powershell-issues)
 
 ---
 
@@ -436,6 +437,84 @@ Remove-Item global.json -Force; @"
   }
 }
 "@ | Out-File -FilePath "global.json" -Encoding utf8NoBOM
+```
+
+---
+
+## Rider IDE Terminal Output Issues
+
+### Problem: No Output from dotnet build or dotnet test in Terminal
+
+**Symptoms**:
+- Running `dotnet build` or `dotnet test` in Rider's terminal shows no output
+- Build completes successfully but terminal appears silent
+- No errors, but also no confirmation of success
+
+**Root Cause**:
+Rider may buffer terminal output or route build/test output to dedicated tool windows instead of the terminal.
+
+**Solution 1: Use Verbosity Flags (Easiest)**
+
+The AITransfer templates already include these flags by default:
+
+```powershell
+# Build with visible output
+dotnet build YourSolution.sln -c Debug --verbosity normal
+
+# Test with visible output
+dotnet test YourSolution.sln --verbosity normal
+
+# Detailed output for troubleshooting
+dotnet build YourSolution.sln --verbosity detailed
+dotnet test YourSolution.sln --verbosity detailed
+```
+
+**Solution 2: Configure Rider MSBuild Verbosity**
+
+1. Open Rider settings: **File → Settings** (or **Ctrl+Alt+S**)
+2. Navigate to: **Build, Execution, Deployment → Toolset and Build**
+3. Find "MSBuild verbosity" dropdown
+4. Change from `Minimal` to `Normal` or `Detailed`
+5. Click **Apply** and **OK**
+
+**Solution 3: Configure Unit Test Output**
+
+1. Open Rider settings: **File → Settings**
+2. Navigate to: **Build, Execution, Deployment → Unit Testing**
+3. Enable "Show test output in the run tool window"
+4. Set verbosity to `Normal` or `Detailed`
+5. Click **Apply** and **OK**
+
+**Solution 4: Use Alternative Output Windows**
+
+Rider routes output to specialized tool windows:
+
+- **Build output**: **View → Tool Windows → Build** (or **Alt+0**)
+- **Test results**: **View → Tool Windows → Unit Tests** (or **Alt+8**)
+
+**Solution 5: Test in External Terminal**
+
+If Rider's terminal continues to have issues, use an external terminal:
+
+```powershell
+# Open PowerShell externally
+# Navigate to repository root
+cd "D:\path\to\your\repository"
+
+# Run commands with verbosity
+dotnet build YourSolution.sln --verbosity normal
+```
+
+**Prevention**:
+The AITransfer configuration templates have been updated (December 2, 2025) to include `--verbosity normal` flags by default in all build and test commands, preventing this issue in new projects.
+
+**Verification**:
+```powershell
+# Should show detailed build output
+dotnet build YourSolution.sln --verbosity normal
+
+# Should show test discovery and results
+dotnet test YourSolution.sln --verbosity normal
 ```
 
 ---

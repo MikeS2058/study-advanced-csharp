@@ -79,41 +79,67 @@
 
 **Critical**: This repository uses PowerShell. Never use Bash operators like `&&`.
 
+**Rider Terminal Issue**: If terminal doesn't show build/test output, use `--verbosity normal` or `--verbosity detailed` flags. Rider may buffer output or route it to Build/Unit Tests tool windows instead of terminal.
+
 ### Correct PowerShell Syntax
 ```powershell
 # Sequential execution (semicolon)
-dotnet restore; dotnet build Learning_AdvancedCSharpStudies.sln -c Debug
+dotnet restore; dotnet build Learning_AdvancedCSharpStudies.sln -c Debug --verbosity normal
 
 # Conditional execution (if statement)
-if (dotnet build Learning_AdvancedCSharpStudies.sln -c Release) { dotnet test Learning_AdvancedCSharpStudies.sln -c Release }
+if (dotnet build Learning_AdvancedCSharpStudies.sln -c Release --verbosity normal) { dotnet test Learning_AdvancedCSharpStudies.sln -c Release --verbosity normal }
 ```
 
 ### Standard Workflows
 
-**Restore & Build**:
+**Restore & Build** (with visible output):
 ```powershell
-dotnet restore; dotnet build Learning_AdvancedCSharpStudies.sln -c Debug
+dotnet restore; dotnet build Learning_AdvancedCSharpStudies.sln -c Debug --verbosity normal
 ```
 
 **Build & Run** (for executable projects):
 ```powershell
-dotnet build Learning_AdvancedCSharpStudies.sln -c Debug; dotnet run --project .\Learning_AdvancedCSharpStudies\Learning_AdvancedCSharpStudies.csproj -c Debug
+dotnet build Learning_AdvancedCSharpStudies.sln -c Debug --verbosity normal; dotnet run --project .\Learning_AdvancedCSharpStudies\Learning_AdvancedCSharpStudies.csproj -c Debug
 ```
 
-**Run All Tests**:
+**Run All Tests** (with visible output):
 ```powershell
-dotnet test Learning_AdvancedCSharpStudies.sln
+dotnet test Learning_AdvancedCSharpStudies.sln --verbosity normal
 ```
 
 **Run Specific Test Class**:
 ```powershell
-dotnet test --filter FullyQualifiedName~[TestClassName]
+dotnet test --filter FullyQualifiedName~[TestClassName] --verbosity normal
+```
+
+**Detailed Output** (for troubleshooting):
+```powershell
+# Detailed build output
+dotnet build Learning_AdvancedCSharpStudies.sln -c Debug --verbosity detailed
+
+# Detailed test output
+dotnet test Learning_AdvancedCSharpStudies.sln --verbosity detailed
 ```
 
 **Clean Artifacts**:
 ```powershell
 Get-ChildItem -Recurse -Directory -Include bin,obj | Remove-Item -Recurse -Force
 ```
+
+### Rider-Specific Configuration
+
+If terminal still shows no output, check these Rider settings:
+
+1. **Settings → Build, Execution, Deployment → Toolset and Build**
+   - Set "MSBuild verbosity" to `Normal` or `Detailed`
+
+2. **Settings → Build, Execution, Deployment → Unit Testing**
+   - Enable "Show test output in the run tool window"
+   - Set verbosity to `Normal` or `Detailed`
+
+3. **View Tool Windows** (alternative output locations):
+   - **View → Tool Windows → Build** — for build output
+   - **View → Tool Windows → Unit Tests** — for test results
 
 ---
 
@@ -311,10 +337,10 @@ Check individual `.csproj` files for specific package versions and dependencies.
 
 | Task | Command |
 |------|---------|
-| Build Debug | `dotnet build Learning_AdvancedCSharpStudies.sln -c Debug` |
-| Build Release | `dotnet build Learning_AdvancedCSharpStudies.sln -c Release` |
+| Build Debug | `dotnet build Learning_AdvancedCSharpStudies.sln -c Debug --verbosity normal` |
+| Build Release | `dotnet build Learning_AdvancedCSharpStudies.sln -c Release --verbosity normal` |
 | Run App | `dotnet run --project .\Learning_AdvancedCSharpStudies\Learning_AdvancedCSharpStudies.csproj` |
-| Test All | `dotnet test Learning_AdvancedCSharpStudies.sln` |
+| Test All | `dotnet test Learning_AdvancedCSharpStudies.sln --verbosity normal` |
 | Test Verbose | `dotnet test Learning_AdvancedCSharpStudies.sln --verbosity detailed` |
 | Clean | `Get-ChildItem -Recurse -Directory -Include bin,obj \| Remove-Item -Recurse -Force` |
 
