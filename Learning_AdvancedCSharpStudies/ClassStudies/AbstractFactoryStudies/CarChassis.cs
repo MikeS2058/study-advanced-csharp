@@ -1,6 +1,6 @@
 ﻿namespace Learning_AdvancedCSharpStudies.ClassStudies.AbstractFactoryStudies;
 
-class CarChassis : IChassis
+public class CarChassis : IChassis
 {
-
+    public string ChassisParts { get; } = "Car Chassis Parts";
 }

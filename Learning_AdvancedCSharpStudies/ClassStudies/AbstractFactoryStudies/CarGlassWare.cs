@@ -2,5 +2,5 @@
 
 public class CarGlassWare : IGlassWare
 {
-
+    public string GlassWareParts { get; } = "Car Glass Parts";
 }

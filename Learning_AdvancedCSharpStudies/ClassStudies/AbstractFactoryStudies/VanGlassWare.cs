@@ -2,5 +2,6 @@
 
 public class VanGlassWare : IGlassWare
 {
+    public string GlassWareParts { get; } = "Van Glass Parts";
 
 }

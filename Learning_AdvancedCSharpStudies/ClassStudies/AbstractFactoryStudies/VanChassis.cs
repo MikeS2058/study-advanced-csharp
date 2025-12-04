@@ -2,5 +2,5 @@
 
 public class VanChassis : IChassis
 {
-
+    public string ChassisParts { get; } = "Van Chassis Parts";
 }
