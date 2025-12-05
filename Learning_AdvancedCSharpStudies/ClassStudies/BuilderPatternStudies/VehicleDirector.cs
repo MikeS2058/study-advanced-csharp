@@ -4,17 +4,38 @@
 
 public interface IVehicle
 {
-    public string VehicleType { get; }
+    string VehicleType { get; }
+    IReadOnlyList<string> VehicleFeatures { get; init; }
+    string? ToString();
 }
 
-public class Van : IVehicle
+public abstract class VehicleBase : IVehicle
 {
-    public string VehicleType => "Van";
+    public abstract string VehicleType { get; }
+    public abstract IReadOnlyList<string> VehicleFeatures { get; init; }
+
+    protected static string[] ValidateFeatures(string[] features)
+    {
+        ArgumentNullException.ThrowIfNull(features);
+        if (features.Length == 0)
+        {
+            throw new ArgumentException("Car must have at least one feature.", nameof(features));
+        }
+
+        return features;
+    }
 }
 
-public class Car : IVehicle
+public class Van(string[] features) : VehicleBase
 {
-    public string VehicleType => "Car";
+    public override string VehicleType => "Van";
+    public override IReadOnlyList<string> VehicleFeatures { get; init; } = ValidateFeatures(features);
+}
+
+public class Car(string[] features) : VehicleBase
+{
+    public override string VehicleType => "Car";
+    public override IReadOnlyList<string> VehicleFeatures { get; init; } = ValidateFeatures(features);
 }
 
 #endregion
@@ -23,44 +44,56 @@ public class Car : IVehicle
 
 public abstract class VehicleDirector : VehicleBuilder
 {
-    public abstract void Build();
+    public abstract IVehicle Build();
 }
 
 public class CarDirector : VehicleDirector
 {
-    public override void Build()
+    private readonly VehicleBuilder _builder;
+
+    public CarDirector(VehicleBuilder? builder)
     {
-        BuildBody();
-        BuildChassis();
+        ArgumentNullException.ThrowIfNull(builder);
+        if (builder is not CarBuilder)
+        {
+            throw new ArgumentException("Builder must be a CarBuilder", nameof(builder));
+        }
+
+        _builder = builder;
     }
 
-    protected override void BuildBody()
+    public override IVehicle Build()
     {
-        throw new NotImplementedException();
-    }
-
-    protected override void BuildChassis()
-    {
-        throw new NotImplementedException();
+        _builder.BuildBody();
+        _builder.BuildChassis();
+        _builder.BuildBoot();
+        _builder.BuildPassengerArea();
+        _builder.BuildWindows();
+        return _builder.Vehicle ?? throw new InvalidOperationException("Vehicle not built");
     }
 }
 
 public class VanDirector : VehicleDirector
 {
-    public override void Build()
+    private readonly VehicleBuilder _builder;
+
+    public VanDirector(VehicleBuilder? builder)
     {
-        BuildBody();
-        BuildChassis();
+        ArgumentNullException.ThrowIfNull(builder);
+        if (builder is not VanBuilder)
+        {
+            throw new ArgumentException("Builder must be a VanBuilder", nameof(builder));
+        }
+
+        _builder = builder;
     }
 
-    protected override void BuildBody()
+    public override IVehicle Build()
     {
-        throw new NotImplementedException();
-    }
-
-    protected override void BuildChassis()
-    {
-        throw new NotImplementedException();
+        _builder.BuildBody();
+        _builder.BuildChassis();
+        _builder.BuildWindows();
+        return _builder.Vehicle ?? throw new InvalidOperationException("Vehicle not built");
     }
 }
 
@@ -70,38 +103,104 @@ public class VanDirector : VehicleDirector
 
 public abstract class VehicleBuilder
 {
-    public IVehicle? Vehicle { get; private set; }
-    protected abstract void BuildBody();
-    protected abstract void BuildChassis();
+    public IVehicle? Vehicle { get; protected set; }
+    public List<string>[] Features { get; protected set; } = new List<string>[5];
+
+    public virtual string BuildBody()
+    {
+        return string.Empty;
+    }
+
+    public virtual string BuildChassis()
+    {
+        return string.Empty;
+    }
+
+    public virtual string BuildBoot()
+    {
+        return string.Empty;
+    }
+
+    public virtual string BuildPassengerArea()
+    {
+        return string.Empty;
+    }
+
+    public virtual string BuildWindows()
+    {
+        return string.Empty;
+    }
+
+    protected virtual string BuildReinforcedStorageArea()
+    {
+        return string.Empty;
+    }
 }
 
 public class CarBuilder : VehicleBuilder
 {
-    protected override void BuildBody()
+    public override string BuildBody()
     {
-        //Todo: Implement Car Body Building Logic
-        throw new NotImplementedException();
+        base.BuildBody();
+        return "Car Body Built";
     }
 
-    protected override void BuildChassis()
+    public override string BuildChassis()
     {
-        //todo: Implement Car Chassis Building Logic
-        throw new NotImplementedException();
+        base.BuildChassis();
+        return "Car Chassis Built";
+    }
+
+    public override string BuildBoot()
+    {
+        base.BuildBoot();
+        return "Car Boot Built";
+    }
+
+
+    public override string BuildPassengerArea()
+    {
+        base.BuildPassengerArea();
+        return "Car Passenger Area Built";
+    }
+
+    protected override string BuildReinforcedStorageArea()
+    {
+        base.BuildReinforcedStorageArea();
+        return "Car Reinforced Storage Area Built";
+    }
+
+    public override string BuildWindows()
+    {
+        base.BuildWindows();
+        return "Car Windows Built";
     }
 }
 
 public class VanBuilder : VehicleBuilder
 {
-    protected override void BuildBody()
+    public override string BuildBody()
     {
-        //Todo: Implement Van Body Building Logic
-        throw new NotImplementedException();
+        base.BuildBody();
+        return "Van Body Built";
     }
 
-    protected override void BuildChassis()
+    public override string BuildChassis()
     {
-        //Todo: Implement Van Chassis Building Logic
-        throw new NotImplementedException();
+        base.BuildChassis();
+        return "Van Chassis Built";
+    }
+
+    protected override string BuildReinforcedStorageArea()
+    {
+        base.BuildReinforcedStorageArea();
+        return "Van Reinforced Storage Area Built";
+    }
+
+    public override string BuildWindows()
+    {
+        base.BuildWindows();
+        return "Van Windows Built";
     }
 }
 
