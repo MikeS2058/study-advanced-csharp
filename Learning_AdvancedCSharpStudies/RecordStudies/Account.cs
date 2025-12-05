@@ -34,8 +34,8 @@ public sealed record Account
 
     private static string ValidateName(string? name, string paramName)
     {
-        ArgumentNullException.ThrowIfNullOrWhiteSpace(name, paramName);
-        return name!;
+        ArgumentException.ThrowIfNullOrWhiteSpace(name, paramName);
+        return name;
     }
 
     private static Guid ValidateGuid(Guid guid, string paramName) =>
