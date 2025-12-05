@@ -36,7 +36,6 @@
 /// </exception>
 ```
 
-
 ---
 
 ### 2. ✅ Removed Redundant Property Declarations
@@ -167,6 +166,7 @@ Account(Id: 12345678-1234-1234-1234-123456789012, Name: Test Account)
 **When to Override ToString() in Records**:
 
 Override `ToString()` only when you need to:
+
 1. **Exclude sensitive data** (e.g., hiding password hashes)
 2. **Apply custom formatting** (e.g., currency, date formatting)
 3. **Limit output** (e.g., truncating long values)
@@ -268,6 +268,7 @@ public sealed record Account
 ```
 
 **Note**: The `ToString()` method is not overridden. The default record implementation provides readable output:
+
 ```
 Account { Id = 12345678-1234-1234-1234-123456789012, Name = Test Account }
 ```

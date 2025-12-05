@@ -1,15 +1,15 @@
-﻿namespace Learning_AdvancedCSharpStudies.ClassStudies.FactoryStudies;
+﻿using Learning_AdvancedCSharpStudies.ClassStudies.FactoryStudies.CompanyVehicles;
 
-using CompanyVehicles;
+namespace Learning_AdvancedCSharpStudies.ClassStudies.FactoryStudies;
 
 /// <summary>
-/// Concrete factory for creating van vehicles.
-/// Implements the factory method pattern to create different van types.
+///     Concrete factory for creating van vehicles.
+///     Implements the factory method pattern to create different van types.
 /// </summary>
 public class VanFactory : VehicleFactory
 {
     /// <summary>
-    /// Builds a default van (BoxVan).
+    ///     Builds a default van (BoxVan).
     /// </summary>
     /// <returns>A new BoxVan instance.</returns>
     public override IVehicle Build()
@@ -18,10 +18,10 @@ public class VanFactory : VehicleFactory
     }
 
     /// <summary>
-    /// Selects and builds a specific van type based on the provided type name.
+    ///     Selects and builds a specific van type based on the provided type name.
     /// </summary>
     /// <param name="vehicleType">The type of van to create (BoxVan or Pickup).</param>
-    /// <returns>A new van instance of the specified type, or <see langword="null"/> if type is not recognized.</returns>
+    /// <returns>A new van instance of the specified type, or <see langword="null" /> if type is not recognized.</returns>
     public override IVehicle? SelectVehicle(string vehicleType)
     {
         return vehicleType.ToLower() switch

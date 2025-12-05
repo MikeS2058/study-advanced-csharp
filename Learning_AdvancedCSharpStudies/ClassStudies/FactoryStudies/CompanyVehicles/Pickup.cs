@@ -1,12 +1,12 @@
-﻿﻿namespace Learning_AdvancedCSharpStudies.ClassStudies.FactoryStudies.CompanyVehicles;
+﻿namespace Learning_AdvancedCSharpStudies.ClassStudies.FactoryStudies.CompanyVehicles;
 
 /// <summary>
-/// Represents a pickup truck, a concrete implementation of <see cref="AbstractVan"/>.
+///     Represents a pickup truck, a concrete implementation of <see cref="AbstractVan" />.
 /// </summary>
 public class Pickup : AbstractVan
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="Pickup"/> class.
+    ///     Initializes a new instance of the <see cref="Pickup" /> class.
     /// </summary>
     public Pickup()
     {
@@ -15,7 +15,7 @@ public class Pickup : AbstractVan
     }
 
     /// <summary>
-    /// Paints the pickup truck with a new colour.
+    ///     Paints the pickup truck with a new colour.
     /// </summary>
     public override void Paint()
     {

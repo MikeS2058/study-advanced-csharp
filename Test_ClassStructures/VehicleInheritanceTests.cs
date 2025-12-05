@@ -1,9 +1,9 @@
-﻿namespace Test_ClassStructures.InheritanceTests;
+﻿using Learning_AdvancedCSharpStudies.ClassStudies.FactoryStudies.CompanyVehicles;
 
-using Learning_AdvancedCSharpStudies.ClassStudies.FactoryStudies.CompanyVehicles;
+namespace Test_ClassStructures.InheritanceTests;
 
 /// <summary>
-/// Tests for the vehicle inheritance hierarchy.
+///     Tests for the vehicle inheritance hierarchy.
 /// </summary>
 public class VehicleInheritanceTests
 {

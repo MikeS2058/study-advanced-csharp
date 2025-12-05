@@ -1,12 +1,12 @@
-﻿﻿namespace Learning_AdvancedCSharpStudies.ClassStudies.FactoryStudies.CompanyVehicles;
+﻿namespace Learning_AdvancedCSharpStudies.ClassStudies.FactoryStudies.CompanyVehicles;
 
 /// <summary>
-/// Demonstrates the vehicle inheritance hierarchy with various examples.
+///     Demonstrates the vehicle inheritance hierarchy with various examples.
 /// </summary>
 public static class InheritanceDemo
 {
     /// <summary>
-    /// Runs all demonstration examples for the vehicle inheritance hierarchy.
+    ///     Runs all demonstration examples for the vehicle inheritance hierarchy.
     /// </summary>
     public static void Run()
     {
@@ -22,7 +22,7 @@ public static class InheritanceDemo
     }
 
     /// <summary>
-    /// Demonstrates creating and using different car types.
+    ///     Demonstrates creating and using different car types.
     /// </summary>
     private static void DemonstrateCars()
     {
@@ -42,7 +42,7 @@ public static class InheritanceDemo
     }
 
     /// <summary>
-    /// Demonstrates creating and using different van types.
+    ///     Demonstrates creating and using different van types.
     /// </summary>
     private static void DemonstrateVans()
     {
@@ -58,7 +58,7 @@ public static class InheritanceDemo
     }
 
     /// <summary>
-    /// Demonstrates polymorphism by treating all vehicles as <see cref="IVehicle"/>.
+    ///     Demonstrates polymorphism by treating all vehicles as <see cref="IVehicle" />.
     /// </summary>
     private static void DemonstratePolymorphism()
     {
@@ -81,7 +81,7 @@ public static class InheritanceDemo
     }
 
     /// <summary>
-    /// Demonstrates modifying vehicle properties and painting with new colours.
+    ///     Demonstrates modifying vehicle properties and painting with new colours.
     /// </summary>
     private static void DemonstratePropertyAccess()
     {

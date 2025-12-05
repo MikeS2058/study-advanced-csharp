@@ -1,12 +1,12 @@
-﻿﻿namespace Learning_AdvancedCSharpStudies.ClassStudies.FactoryStudies.CompanyVehicles;
+﻿namespace Learning_AdvancedCSharpStudies.ClassStudies.FactoryStudies.CompanyVehicles;
 
 /// <summary>
-/// Represents a sport car, a concrete implementation of <see cref="AbstractCar"/>.
+///     Represents a sport car, a concrete implementation of <see cref="AbstractCar" />.
 /// </summary>
 public class Sport : AbstractCar
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="Sport"/> class.
+    ///     Initializes a new instance of the <see cref="Sport" /> class.
     /// </summary>
     public Sport()
     {
@@ -15,7 +15,7 @@ public class Sport : AbstractCar
     }
 
     /// <summary>
-    /// Paints the sport car with a new colour.
+    ///     Paints the sport car with a new colour.
     /// </summary>
     public override void Paint()
     {

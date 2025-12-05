@@ -1,12 +1,12 @@
-﻿﻿namespace Learning_AdvancedCSharpStudies.ClassStudies.FactoryStudies.CompanyVehicles;
+﻿namespace Learning_AdvancedCSharpStudies.ClassStudies.FactoryStudies.CompanyVehicles;
 
 /// <summary>
-/// Represents a box van, a concrete implementation of <see cref="AbstractVan"/>.
+///     Represents a box van, a concrete implementation of <see cref="AbstractVan" />.
 /// </summary>
 public class BoxVan : AbstractVan
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="BoxVan"/> class.
+    ///     Initializes a new instance of the <see cref="BoxVan" /> class.
     /// </summary>
     public BoxVan()
     {
@@ -15,7 +15,7 @@ public class BoxVan : AbstractVan
     }
 
     /// <summary>
-    /// Paints the box van with a new colour.
+    ///     Paints the box van with a new colour.
     /// </summary>
     public override void Paint()
     {
