@@ -1,4 +1,4 @@
-﻿namespace Learning_AdvancedCSharpStudies.ClassStudies;
+﻿namespace Learning_AdvancedCSharpStudies.RecordStudies;
 
 public sealed record Account(Guid Id, string Name)
 {

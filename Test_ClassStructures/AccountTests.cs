@@ -1,4 +1,6 @@
-﻿namespace Test_ClassStructures;
+﻿using Learning_AdvancedCSharpStudies.RecordStudies;
+
+namespace Test_ClassStructures;
 
 public class AccountTests
 {
